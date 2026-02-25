@@ -1,0 +1,22 @@
+{
+  "name": "automatizaci-n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OscarQuintero1997/Automatizaci-n.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OscarQuintero1997/Automatizaci-n/issues"
+  },
+  "homepage": "https://github.com/OscarQuintero1997/Automatizaci-n#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.0"
+  }
+}
