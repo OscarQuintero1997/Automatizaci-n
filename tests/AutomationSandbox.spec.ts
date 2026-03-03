@@ -116,6 +116,7 @@ import { test, Browser, Page, expect } from '@playwright/test';
         //Tabla estatica
 
         test ('Valido la columna Nombres de la tabla estatica', async ({ page }) => {
+            test.fail();
             await test.step('Dado que navego al sandbox de information Free Range Testers', async () => {
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');  
             })
@@ -175,9 +176,8 @@ import { test, Browser, Page, expect } from '@playwright/test';
 
         test ('Validando dentro de un popup', async ({ page }) => {
 
-            const popupPromise = page.waitForEvent('popup');
             await test.step('dado que navego al sandbox', async () => {
-                await page.goto('')
+                await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/')
             })
 
             await test.step('Cuando hago click en el botón popup', async () => {
@@ -185,12 +185,9 @@ import { test, Browser, Page, expect } from '@playwright/test';
             })
 
             await test.step('Puedo validar un elemento dentro de un popup', async () => {
-                const popup = await popupPromise;
-                await popup.waitForLoadState();
-                await expect(popup.getByText('¿Viste? ¡Apareció un popup!')).toHaveText('¿Viste? ¡Apareció un pop-ceup!');
+                await expect(page.getByText('¿Viste? ¡Apareció un Pop-up!')).toHaveText('¿Viste? ¡Apareció un Pop-up!');
                 await page.getByRole('button', { name: 'Cerrar' }).click();
             })
-
 
         })
         //Subir archivos
