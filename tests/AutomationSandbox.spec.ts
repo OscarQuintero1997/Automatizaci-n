@@ -1,4 +1,5 @@
 import { test, Browser, Page, expect } from '@playwright/test';
+import { SandboxPage } from './pages/sandboxpage';
 
 (async () => {
     let browser: Browser;
@@ -57,8 +58,11 @@ import { test, Browser, Page, expect } from '@playwright/test';
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
 
                 await test.step('Puedo seleccionar el checkbox para pasta', async () => {
-                    await page.getByRole('checkbox', { name: 'Pasta 🍝' }).check();
-                    await expect(page.getByLabel( 'Pasta 🍝' )).toBeChecked();
+
+                    const sandbox = new SandboxPage(page);
+                    // await page.getByRole('checkbox', { name: 'Pasta 🍝' }).check();
+                    await sandbox.checkPasta();
+                    await expect(sandbox.pastaCheckbox, 'El checkbox de pasta no está seleccionado').toBeChecked();
                 })
 
                 await test.step('Puedo deseleccionar el checkbox pasta', async () => {
